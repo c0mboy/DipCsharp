@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "cyDgi28hPN/aiPAlZ+1SnrFnDzgXwlxYgkgu/i5DEb481upXyuQrwRj0sx5l2WHFNmTBaE69BfPQiKXRMTw8Kg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sebas\\RiderProjects2\\ConsoleApp1\\testDependencyInversionPrinciple\\testDependencyInversionPrinciple.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sebas\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.0-preview.2.24128.5\\microsoft.extensions.dependencyinjection.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\sebas\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0-preview.2.24128.5\\microsoft.extensions.dependencyinjection.abstractions.9.0.0-preview.2.24128.5.nupkg.sha512"
+  ],
+  "logs": []
+}
