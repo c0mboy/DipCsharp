@@ -60,7 +60,7 @@ namespace ConsoleApp1
             Console.WriteLine($"Sant eller falskt? {boolean}");
         }
     }
-    
+
     /// <summary>
     /// Skapar en ny ServiceCollection som kommer att innehålla alla registreringar av tjänster.
     /// Registrerar IGreetingService för att använda GreetingService. Varje gång IGreetingService efterfrågas,
@@ -76,26 +76,34 @@ namespace ConsoleApp1
     /// inom samma scope, men en ny skulle skapas vid nästa begäran om tjänsten är transient.
     /// Använder den erhållna instansen av IGreetingNumberService för att anropa GreetNumber-metoden med talet 2.
     /// </summary>
-    internal static class Program
+    public class Dip
     {
-        internal static void Main()
+        public void DipContain()
         {
             var services = new ServiceCollection();
 
             services.AddTransient<IGreetingService, GreetingService>();
             services.AddTransient<IGreetingNumberService, GreetingNumber>();
             services.AddTransient<IGreetingBoolService, GreetingBool>();
-            
+
             var serviceProvider = services.BuildServiceProvider();
             var greetingService = serviceProvider.GetService<IGreetingService>();
             var greetingNumberService = serviceProvider.GetService<IGreetingNumberService>();
             var greetingBooleanService = serviceProvider.GetService<IGreetingBoolService>();
-            
+
             greetingService?.Greet("Testar nu Dependecy injection");
             greetingService?.Greet("test 2");
             greetingNumberService?.GreetNumber(2);
             greetingBooleanService?.GreetBool(true);
-            
+        }
+    }
+    internal static class Program
+    {
+        internal static void Main()
+        {
+            var dipiClass = new Dip();
+            dipiClass.DipContain();
+
         }
 
     }

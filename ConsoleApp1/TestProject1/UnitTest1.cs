@@ -1,4 +1,5 @@
 using ConsoleApp1;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace TestProject1;
 
@@ -74,4 +75,27 @@ public class Tests
         Assert.That(sw.ToString(), Is.EqualTo(expected));
     } 
     
+    [Test] // Används för att markera testmetoder i NUnit, motsvarande Fact i xUnit.
+    public void Services_ShouldBeResolved()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddTransient<IGreetingService, GreetingService>();
+        services.AddTransient<IGreetingNumberService, GreetingNumber>();
+        services.AddTransient<IGreetingBoolService, GreetingBool>();
+        var serviceProvider = services.BuildServiceProvider();
+
+        // Act
+        var greetingService = serviceProvider.GetService<IGreetingService>();
+        var greetingNumberService = serviceProvider.GetService<IGreetingNumberService>();
+        var greetingBoolService = serviceProvider.GetService<IGreetingBoolService>();
+
+        // Assert
+        // I NUnit används Assert.IsNotNull för att verifiera att ett objekt inte är null.
+        Assert.IsNotNull(greetingService, "GreetingService should not be null.");
+        Assert.IsNotNull(greetingNumberService, "GreetingNumberService should not be null.");
+        Assert.IsNotNull(greetingBoolService, "GreetingBoolService should not be null.");
+
+        // Anmärkning: Meddelandena efter kommat är valfria och tillhandahåller ytterligare kontext om testet misslyckas.
+    }
 }
